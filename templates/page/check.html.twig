@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Contrôle pointage {% endblock title %}
+
+{% block body %}
+
+<link rel="stylesheet" href="css/tableau.css" type="text/css"/>
+<h1>{{ title }}</h1>
+
+<section class="form">
+    <form action="" method="POST">
+        <input type="text" name="matricule" placeholder="N° Matricule">
+        <input type="text" name="chantier" placeholder="N° Chantier">
+        <button type="submit">Vérifier</button>
+    </form>
+
+    {% if matricule %}
+        <p>{{ matricule }}</p>
+    {% endif %}
+
+    {% if chantier %}
+        <p>{{ chantier }}</p>
+    {% endif %}
+</section>
+<section class="tableau">
+	<table>
+        <tr>
+            <td>Matricule</td>
+            <td>Chantier</td>
+            <td>Date</td>
+            <td>Temps</td>
+		</tr>
+        {% for check in checks %}
+            <tr>
+                <td>{{ check.matricule }}</td>
+                <td>{{ check.chantier }}</td>
+                <td>{{ check.date|date('d/m/Y') }}</td>
+                <td>{{ check.time|date('h:m:s') }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</section>
+{% endblock %}

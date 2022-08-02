@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Utilisateurs {% endblock title %}
+
+{% block body %}
+
+<link rel="stylesheet" href="css/tableau.css" type="text/css"/>
+<h1>{{ title }}</h1>
+
+<section class="tableau">
+	<table>
+        <tr>
+            <td>N°</td>
+            <td>Nom</td>
+            <td>Prénom</td>
+            <td>Matricule</td>
+		</tr>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.nom }}</td>
+                <td>{{ user.prenom }}</td>
+                <td>{{ user.matricule }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+</section>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Chantiers {% endblock title %}
+
+{% block body %}
+
+<link rel="stylesheet" href="css/tableau.css" type="text/css"/>
+<h1>{{ title }}</h1>
+
+<section class="tableau">
+	<table>
+        <tr>
+            <td>N°</td>
+            <td>Nom</td>
+            <td>Adresse</td>
+            <td>Date</td>
+		</tr>
+        {% for chantier in chantiers %}
+            <tr>
+                <td>{{ chantier.id }}</td>
+                <td>{{ chantier.nom }}</td>
+                <td>{{ chantier.adresse }}</td>
+                <td><small>{{ chantier.date|date('d-m-Y') }}</small></td>
+            </tr>
+        {% endfor %}
+    </table>
+
+</section>
+{% endblock %}

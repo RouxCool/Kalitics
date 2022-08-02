@@ -1,0 +1,18 @@
+controllers:
+    resource: ../src/Controller/
+    type: attribute
+index:
+    path: /
+    controller: App\Controller\IndexController::index
+users:
+    path: /users
+    controller: App\Controller\UsersController::index
+chantiers:
+    path: /chantiers
+    controller: App\Controller\ChantiersController::index
+pointages:
+    path: /pointages
+    controller: App\Controller\PointagesController::index
+check:
+    path: /check
+    controller: App\Controller\CheckController::index

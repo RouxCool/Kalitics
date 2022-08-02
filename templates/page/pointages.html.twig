@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Pointages {% endblock title %}
+
+{% block body %}
+
+<link rel="stylesheet" href="css/tableau.css" type="text/css"/>
+<h1>{{ title }}</h1>
+
+<section class="tableau">
+	<table>
+        <tr>
+            <td>N°</td>
+            <td>Matricule</td>
+            <td>Chantier</td>
+            <td>Date</td>
+            <td>Temps</td>
+		</tr>
+        {% for pointage in pointages %}
+            <tr>
+                <td>{{ pointage.id }}</td>
+                <td>{{ pointage.matricule }}</td>
+                <td>{{ pointage.chantier }}</td>
+                <td>{{ pointage.date|date('d/m/Y') }}</td>
+                <td>{{ pointage.time|date('h:m:s') }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</section>
+{% endblock %}

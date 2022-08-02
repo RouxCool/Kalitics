@@ -1,0 +1,72 @@
+/***** Général *****/
+
+.tableau {
+	width: 100%;
+	text-align: left;
+	text-indent: 20px;
+}
+
+.tableau table {
+	border-collapse: collapse;
+	width: 100%;
+	margin: 0 auto;
+	box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+	margin-bottom: 20px;
+	border-radius: 5px;
+}
+
+.tableau td {
+	border-right: 1px solid gray;
+	border-left: 1px solid gray;
+}
+
+.tableau td a {
+	text-decoration: none;
+	color: black;
+}
+
+.tableau tr:nth-child(odd) {
+	background-color: lightgray;
+}
+
+.tableau tr:nth-child(even) {
+	background-color: white;
+}
+
+.tableau tr:nth-child(1) {
+	background-color: black;
+	color: white;
+}
+
+.tableau h4 {
+	border-top: 5px dashed black;
+	border-bottom: 5px dashed black;
+	margin-top: 10px;
+	text-align: center;
+	font-size: 30px;
+	font-weight: bold;
+}
+
+.tableau img {
+	width: 4%;
+	border: 2px solid black;
+	border-radius: 5px;
+}
+
+.tableau p {
+	text-align: center;
+	font-weight: bold;
+	font-size: 15px;
+}
+
+/***** Responsive Mobile *****/
+
+@media screen and (max-width: 768px) {
+
+}
+
+/***** Responsive Tablette *****/
+
+@media screen and (max-width: 1024px) and (min-width: 769px) {
+
+}
