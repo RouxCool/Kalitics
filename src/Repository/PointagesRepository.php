@@ -39,6 +39,26 @@ class PointagesRepository extends ServiceEntityRepository
         }
     }
 
+    public function findByMatricule($matricule): array
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.matricule = :matricule')
+            ->setParameter('matricule', $matricule)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function findByChantier($chantier): array
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.chantier = :chantier')
+            ->setParameter('chantier', $chantier)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
     public function findByMatriculeChantier($matricule, $chantier): array
     {
         return $this->createQueryBuilder('p')

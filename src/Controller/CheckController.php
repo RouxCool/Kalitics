@@ -19,15 +19,19 @@ class CheckController extends AbstractController
      */
     public function index(Request $request, PointagesRepository $pointageRepo)
     {
+        $matricule = null;
+        $chantier = null;
+        $checks = [];
         if ($request->request->count() > 0) {
             $matricule = $request->request->get('matricule');
             $chantier = $request->request->get('chantier');
-
-            $checks = $pointageRepo->findByMatriculeChantier($matricule, $chantier);
-        } else {
-            $matricule = null;
-            $chantier = null;
-            $checks = [];
+            if (null != $matricule && $chantier) {
+                $checks = $pointageRepo->findByMatriculeChantier($matricule, $chantier);
+            } elseif ($matricule) {
+                $checks = $pointageRepo->findByMatricule($matricule);
+            } elseif ($chantier) {
+                $checks = $pointageRepo->findByChantier($chantier);
+            }
         }
 
         return $this->render('page/check.html.twig', [
