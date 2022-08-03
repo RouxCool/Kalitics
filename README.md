@@ -1,8 +1,8 @@
 # BUG
 
-# Bug sur l'installation de Symfony 4 sur debian, aucune route ne fonctionnais.
+# Bug sur l'utilisation de Symfony 4 sur debian 10, aucune route ne fonctionnais.
 # Installation de Symfony en local avec Wamp.
-# Bug avec Symfony 4 sur le 'php bin/console make:entity', j'ai été bloqué sur cette partie là, message d'erreur, j'ai dû passer sur Symfony 5
+# Bug avec Symfony 4 sur le 'php bin/console make:entity', j'ai été bloqué sur cette partie là, j'ai dû passer sur Symfony 5.
 # [ERROR] The version "latest" couldn't be reached, there are no registered migrations.
 # [ERROR] No mapping information to process
 
