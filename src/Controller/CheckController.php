@@ -21,16 +21,24 @@ class CheckController extends AbstractController
     {
         $matricule = null;
         $chantier = null;
+        $date = null;
         $checks = [];
+        $now = date('d-m-Y');
         if ($request->request->count() > 0) {
+            $date = new \DateTime($request->request->get('date'));
             $matricule = $request->request->get('matricule');
             $chantier = $request->request->get('chantier');
-            if (null != $matricule && $chantier) {
+            if (null != $matricule && $chantier && $date) {
+                $checks = $pointageRepo->findByMatriculeChantierDate($matricule, $chantier, $date);
+            } elseif (null != $matricule && $chantier) {
                 $checks = $pointageRepo->findByMatriculeChantier($matricule, $chantier);
-            } elseif ($matricule) {
+            } elseif (null != $matricule) {
                 $checks = $pointageRepo->findByMatricule($matricule);
-            } elseif ($chantier) {
+            } elseif (null != $chantier) {
                 $checks = $pointageRepo->findByChantier($chantier);
+                /*$checks = $pointageRepo->findByAll([
+                    'chantier' => $chantier
+                ]);*/
             }
         }
 
@@ -39,6 +47,8 @@ class CheckController extends AbstractController
             'checks' => $checks,
             'matricule' => $matricule,
             'chantier' => $chantier,
+            'date' => $date,
+            'now' => $now,
         ]);
     }
 }

@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Pointages;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * @extends ServiceEntityRepository<Pointages>
@@ -70,6 +71,36 @@ class PointagesRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
+
+    public function findByMatriculeChantierDate($matricule, $chantier, $date): array
+    {
+        //$from = new DateTime($date->format("Y-m-d"));
+        //$to   = new DateTime($date->format("Y-m-d"));
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.matricule = :matricule')
+            ->andWhere('p.chantier = :chantier')
+            ->andWhere('p.date BETWEEN :from AND :to')
+            ->setParameter('matricule', $matricule)
+            ->setParameter('chantier', $chantier)
+            ->setParameter('to', $date)
+            ->setParameter('from', $date)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    /*public function findByAll(array $var): array
+    {
+        $req = $this->createQueryBuilder('p');
+        foreach($var as $field => $value) {
+            $req->andWhere('p.:field = :value');
+            $req->setParameter('field', $field);
+            $req->setParameter('value', $value);
+        }
+        $req->getQuery();
+        $req->getResult();
+        return $req;
+    }*/
 
 //    /**
 //     * @return Pointages[] Returns an array of Pointages objects

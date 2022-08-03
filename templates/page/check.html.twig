@@ -20,6 +20,11 @@
         {% else %}
             <input type="text" name="chantier" placeholder="N° Chantier">
         {% endif %}
+        {% if date %}
+            <input type="date" name="date" placeholder="Date" value="{{ now }}">
+        {% else %}
+            <input type="date" name="date" placeholder="Date" value="">
+        {% endif %}
         <button type="submit">Vérifier</button>
     </form>
 </section>
